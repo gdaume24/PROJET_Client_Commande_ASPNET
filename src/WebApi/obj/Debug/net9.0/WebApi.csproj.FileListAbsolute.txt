@@ -1,0 +1,8 @@
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/obj/Debug/net9.0/WebApi.csproj.AssemblyReference.cache
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/obj/Debug/net9.0/rpswa.dswa.cache.json
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/obj/Debug/net9.0/WebApi.GeneratedMSBuildEditorConfig.editorconfig
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/obj/Debug/net9.0/WebApi.AssemblyInfoInputs.cache
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/obj/Debug/net9.0/WebApi.AssemblyInfo.cs
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/obj/Debug/net9.0/WebApi.csproj.CoreCompileInputs.cache
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/obj/Debug/net9.0/WebApi.MvcApplicationPartsAssemblyInfo.cs
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/obj/Debug/net9.0/WebApi.MvcApplicationPartsAssemblyInfo.cache
