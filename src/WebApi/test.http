@@ -1,0 +1,27 @@
+POST http://localhost:5199/clients
+Content-Type: application/json
+
+{
+    "nom": "Mr Daumer",
+    "prenom": "Prenom",
+    "email": "Nom@example.com",
+    "telephone": "0888888888",
+    "adresse": ""
+}
+
+###
+GET http://localhost:5199/clients
+
+
+
+
+
+
+
+
+
+
+
+
+
+
