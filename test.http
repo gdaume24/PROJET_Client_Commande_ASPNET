@@ -1,0 +1,73 @@
+POST http://localhost:5000/client
+Content-Type: application/json
+
+{
+    "nom": "Mr Roland",
+    "prenom": "Prenom",
+    "email": "Nom@example.com",
+    "telephone": "0777777777",
+    "adresse": "lili"
+}
+
+###
+GET http://localhost:5000/client
+
+###
+GET http://localhost:5000/client/3
+
+###
+PUT http://localhost:5000/client/3
+Content-Type: application/json
+
+{
+    "nom": "Mr Rollanddd",
+    "prenom": "Prenodm",
+    "email": "Nom@example.com",
+    "telephone": "0777777778",
+    "adresse": "37 rue de Montignon"
+}
+
+###
+DELETE http://localhost:5000/client/1/
+
+
+
+
+
+
+
+
+###
+POST http://localhost:5000/commande
+Content-Type: application/json
+
+{
+"NumeroCommande": "CMDDDD12345",
+"MontantTotal": 100.50,
+"Statut": "Expédiée",
+"ClientId": 2
+}
+
+###
+GET http://localhost:5000/commande
+
+###
+GET http://localhost:5000/commande/4
+
+###
+PUT http://localhost:5000/commande/4
+Content-Type: application/json
+
+{
+"NumeroCommande": "CMDDDD12345",
+"MontantTotal": 100.50,
+"Statut": "Livrée",
+"ClientId": 3
+}
+
+###
+DELETE http://localhost:5000/commande/5
+
+
+
+

@@ -2,8 +2,8 @@ namespace Domain.Interfaces;
 
 public interface ICommandeRepository
 {
-    Task Add(Commande commande);
-    Task<Commande?> GetById(int id);
+    void Add(Commande commande);
     Task<IReadOnlyList<Commande>> GetAll();
+    Task<Commande?> GetById(int id);
     void Remove(Commande commande);
 }

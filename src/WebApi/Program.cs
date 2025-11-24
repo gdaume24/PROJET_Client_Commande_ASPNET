@@ -1,5 +1,6 @@
 using Application;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +11,10 @@ builder.Services
     .AddApplication()   
     .AddInfrastructure(builder.Configuration)
     .AddControllers();
+
+// FluentValidation automatic integration
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
 
  
 var app = builder.Build();

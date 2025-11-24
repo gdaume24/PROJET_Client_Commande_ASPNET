@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class ChangeTypeIdGuid : Migration
+    public partial class newDatabaseWithIdInt : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,8 @@ namespace Infrastructure.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nom = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Prenom = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -32,12 +33,13 @@ namespace Infrastructure.Migrations
                 name: "Commandes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     NumeroCommande = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCommande = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MontantTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ClientId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

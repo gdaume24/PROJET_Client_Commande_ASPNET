@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Ce+yluY9ZMU=",
+  "dgSpecHash": "tazb5By7rcY=",
   "success": true,
   "projectFilePath": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/WebApi.csproj",
   "expectedPackageFiles": [
     "/Users/apple/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/apple/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/Users/apple/.nuget/packages/fluentvalidation/12.1.0/fluentvalidation.12.1.0.nupkg.sha512",
+    "/Users/apple/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
     "/Users/apple/.nuget/packages/fluentvalidation.dependencyinjectionextensions/12.1.0/fluentvalidation.dependencyinjectionextensions.12.1.0.nupkg.sha512",
     "/Users/apple/.nuget/packages/mediatr/13.1.0/mediatr.13.1.0.nupkg.sha512",
     "/Users/apple/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",

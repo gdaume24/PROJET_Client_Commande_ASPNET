@@ -17,40 +17,53 @@ public class ClientController(IClientService clientService) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllClients()
     {
-        Task<List<ClientResponse>> clients = clientService.GetAllClients();
-
+        IReadOnlyList<ClientResponse> clients = await clientService.GetAllClients();
         return Ok(clients);
     }
 
-    [HttpGet("{clientId:guid}")]
-    public IActionResult GetClientById(Guid clientId)
+    [HttpGet("{clientId:int}")]
+    public async Task<IActionResult> GetClientById(int clientId)
     {
         //invoking the use case 
-        Task<ClientResponse?> client = clientService.GetClientById(clientId);
+        ClientResponse? client = await clientService.GetClientById(clientId);
         // return 200 ok response
+        if (client is null)
+            return NotFound("Client introuvable.");
         return Ok(client);
     }
 
-    [HttpPut("{clientId:guid}")]
-    public IActionResult UpdateClient(
-        Guid clientId, 
-        [FromBody] UpdateClientRequest request,
-        [FromServices] IValidator<UpdateClientRequest> validator
+    [HttpGet("{clientId:int}/commandes")]
+    public async Task<IActionResult> GetClientCommandesById(int clientId)
+    {
+        //invoking the use case 
+        IReadOnlyList<Commande>? commandes = await clientService.GetClientCommandesById(clientId);
+        // return 200 ok response
+        return Ok(commandes);
+    }
+
+    [HttpPut("{clientId:int}")]
+    public async Task<IActionResult> UpdateClient(
+        int clientId, 
+        [FromBody] UpdateClientRequest request
         )
     {
-        var validation = validator.Validate(request);
-        if (!validation.IsValid)
-        {
-            return BadRequest(validation.Errors);
-        }
-        Task<ClientResponse> client = clientService.UpdateClient(clientId, request);
+        ClientResponse? client = await clientService.UpdateClient(clientId, request);
+        if (client is null)
+            return NotFound("Client introuvable.");
         return Ok(client);
     }
 
-    [HttpDelete("{clientId:guid}")]
-    public IActionResult DeleteClient(Guid clientId)
+    [HttpDelete("{clientId:int}")]
+    public async Task<IActionResult> DeleteClient(int clientId)
     {
-        clientService.DeleteClient(clientId);
-        return Ok($"DELETE client with ID: {clientId}");
+        bool deleted = await clientService.DeleteClient(clientId);
+        if (deleted)
+        {
+            return Ok();
+        }
+        else
+        {
+            return NotFound("Client introuvable.");
+        }
     }
 }

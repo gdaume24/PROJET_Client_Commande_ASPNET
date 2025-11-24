@@ -2,15 +2,9 @@ namespace Application.Commandes;
 
 public interface ICommandeService
 {
-    Task<Commande> CreateCommandeAsync(
-        string numeroCommande,
-        DateTime dateCommande,
-        decimal montant,
-        string statut,
-        int clientId
-    );
-
-    Task<IReadOnlyList<Commande>> GetAllAsync();
-    Task<Commande?> GetByIdAsync(int id);
-    Task DeleteAsync(int id);
+    public Task<Commande?> CreateCommande(CreateCommandeRequest commandeRequest);
+    public Task<IReadOnlyList<Commande>> GetAllCommandes();
+    public Task<Commande?> GetCommandeById(int id);
+    public Task<Commande?> UpdateCommande(int id, UpdateCommandeRequest request);    
+    public Task<bool> DeleteCommande(int id);
 }
