@@ -1,40 +1,25 @@
-// using Domain.Entities;
-// using Domain.Interfaces;
-// using Infrastructure.Persistence;
-// using Microsoft.EntityFrameworkCore;
+using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-// namespace Infrastructure.Repositories;
+public class CommandeRepository : ICommandeRepository
+{
+    private readonly DbStoreContext _context;
 
-// public class CommandeRepository : ICommandeRepository
-// {
-//     private readonly AppDbContext _context;
+    public CommandeRepository(DbStoreContext context)
+    {
+        _context = context;
+    }
+    public void Add(Commande commande) 
+        => _context.Commandes.Add(commande);
 
-//     public CommandeRepository(AppDbContext context)
-//     {
-//         _context = context;
-//     }
+    public async Task<IReadOnlyList<Commande>> GetAll()
+        => await _context.Commandes.Include(x => x.Client).ToListAsync();
+    public async Task<Commande?> GetById(int id)
+        => await _context.Commandes.Include(x => x.Client).FirstOrDefaultAsync(x => x.Id == id);
 
-//     public async Task Add(Commande commande)
-//     {
-//         await _context.Commandes.AddAsync(commande);
-//     }
+    public void Update(Commande commande)
+        => _context.Commandes.Update(commande);
 
-//     public async Task<Commande?> GetById(int id)
-//     {
-//         return await _context.Commandes
-//             .Include(c => c.Client)
-//             .FirstOrDefaultAsync(c => c.Id == id);
-//     }
-
-//     public async Task<IReadOnlyList<Commande>> GetAll()
-//     {
-//         return await _context.Commandes
-//             .Include(c => c.Client)
-//             .ToListAsync();
-//     }
-
-//     public void Remove(Commande commande)
-//     {
-//         _context.Commandes.Remove(commande);
-//     }
-// }
+    public void Remove(Commande commande)
+        => _context.Commandes.Remove(commande);
+}

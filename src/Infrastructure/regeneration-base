@@ -1,0 +1,17 @@
+# Installer l’outil EF s’il manque
+dotnet tool install --global dotnet-ef
+
+# (Optionnel) Supprimer la base
+dotnet ef database drop -p ../Infrastructure -s . -f
+
+# Supprimer le dossier des migrations (dans le code)
+# puis recréer une migration initiale
+dotnet ef migrations add Initial_IntIds -p ../Infrastructure -s .
+
+# Appliquer la migration
+dotnet ef database update -p ../Infrastructure -s .
+
+
+**
+dotnet ef migrations add newDatabaseWithIdInt
+dotnet ef database update

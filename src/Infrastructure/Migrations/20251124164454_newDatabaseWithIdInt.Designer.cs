@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DbStoreContext))]
-    [Migration("20251124152522_ChangeTypeIdGuid")]
-    partial class ChangeTypeIdGuid
+    [Migration("20251124164454_newDatabaseWithIdInt")]
+    partial class newDatabaseWithIdInt
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,9 +26,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Client", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Adresse")
                         .IsRequired()
@@ -60,12 +62,14 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Commande", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateCommande")
                         .HasColumnType("datetime2");

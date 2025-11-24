@@ -1,11 +1,10 @@
 using Domain.Interfaces;
 
 public class ClientService(
-    IClientRepository repository,
     IUnitOfWork unitOfWork
     ) : IClientService
 {
-    public async Task<Client> CreateClient(CreateClientRequest clientRequest)
+    public async Task<ClientResponse> CreateClient(CreateClientRequest clientRequest)
     {
     Client client = new Client
     {
@@ -18,35 +17,45 @@ public class ClientService(
         unitOfWork.Clients.Add(client);
         await unitOfWork.SaveChangesAsync();   
 
-        return client; 
+        return client.ToResponse();
     }   
-    public async Task<IReadOnlyList<Client>> GetAllClients()
-        => await unitOfWork.Clients.GetAll();
+    public async Task<IReadOnlyList<ClientResponse>> GetAllClients()
+        => (await unitOfWork.Clients.GetAll()).Select(c => c.ToResponse()).ToList();
     
-    public async Task<Client?> GetClientById(Guid id)
-        => await unitOfWork.Clients.GetById(id);
-
-    public async Task<Client> UpdateClient(Guid id, UpdateClientRequest request)    
-    {
-        Client client = new Client
-        {
-            Id = id,
-            Nom = request.Nom!,
-            Prenom = request.Prenom!,
-            Email = request.Email!,
-            Telephone = request.Telephone!,
-            Adresse = request.Adresse!
-        };
-        unitOfWork.Clients.Update(client);
-        await unitOfWork.SaveChangesAsync();
-        return client;
-    }
-    
-    public async Task<bool> DeleteClient(Guid id)
+    public async Task<ClientResponse?> GetClientById(int id)
     {
         Client? client = await unitOfWork.Clients.GetById(id);
-        if (client is null) return false;
-        unitOfWork.Clients.Remove(client);
+        return client?.ToResponse();
+    }
+    public async Task<IReadOnlyList<Commande>?> GetClientCommandesById(int id)
+    {
+        var client = await unitOfWork.Clients.GetByIdWithCommandes(id);
+
+        if (client is null)
+            return new List<Commande>();
+
+        return client.Commandes.ToList();
+    }
+
+    public async Task<ClientResponse?> UpdateClient(int id, UpdateClientRequest request)    
+    {
+        Client? existingClient = await unitOfWork.Clients.GetById(id);
+        if (existingClient is null) return null;
+        existingClient.Nom = request.Nom!;
+        existingClient.Prenom = request.Prenom!;
+        existingClient.Email = request.Email!;
+        existingClient.Telephone = request.Telephone!;
+        existingClient.Adresse = request.Adresse!;
+        await unitOfWork.SaveChangesAsync();
+        return existingClient.ToResponse();
+    }
+    
+    public async Task<bool> DeleteClient(int id)
+    {
+        Client? clientFounded = await unitOfWork.Clients.GetById(id);
+        if (clientFounded is null)
+            return false;
+        unitOfWork.Clients.Remove(clientFounded);
         await unitOfWork.SaveChangesAsync();
         return true;
     }

@@ -1,63 +1,60 @@
-// using Domain.Interfaces;
+using Domain.Interfaces;
 
-// namespace Application.Commandes;
+namespace Application.Commandes;
 
-// public class CommandeService : ICommandeService
-// {
-//     private readonly ICommandeRepository _commandeRepo;
-//     private readonly IClientRepository _clientRepo;
-//     private readonly IUnitOfWork _uow;
+public class CommandeService(IUnitOfWork unitOfWork) : ICommandeService
+{
 
-//     public CommandeService(
-//         ICommandeRepository commandeRepo,
-//         IClientRepository clientRepo,
-//         IUnitOfWork uow)
-//     {
-//         _commandeRepo = commandeRepo;
-//         _clientRepo = clientRepo;
-//         _uow = uow;
-//     }
+    public async Task<Commande?> CreateCommande(CreateCommandeRequest request)
+    {
+        var client = await unitOfWork.Clients.GetById(request.ClientId);
 
-//     public async Task<Commande> CreateAsync(
-//         int clientId,
-//         string numeroCommande,
-//         DateTime dateCommande,
-//         decimal montantTotal,
-//         string statut)
-//     {
-//         // Vérifier que le client existe
-//         var client = await _clientRepo.GetById(clientId);
-//         if (client is null)
-//             throw new Exception("Client introuvable pour cette commande.");
+        if (client is null)
+            return null;
 
-//         var commande = new Commande
-//         {
-//             ClientId = clientId,
-//             NumeroCommande = numeroCommande,
-//             DateCommande = dateCommande,
-//             MontantTotal = montantTotal,
-//             Statut = statut
-//         };
+        Commande commande = new Commande
+        {
+            NumeroCommande = request.NumeroCommande,
+            DateCommande = DateTime.Now,
+            MontantTotal = request.MontantTotal,
+            Statut = request.Statut,
+            ClientId = request.ClientId
+        };
 
-//         await _commandeRepo.Add(commande);
-//         await _uow.SaveChangesAsync();
+        unitOfWork.Commandes.Add(commande);
+        await unitOfWork.SaveChangesAsync();
 
-//         return commande;
-//     }
+        return commande;
+    }
 
-//     public Task<Commande?> GetByIdAsync(int id) =>
-//         _commandeRepo.GetById(id);
+    public Task<IReadOnlyList<Commande>> GetAllCommandes() =>
+        unitOfWork.Commandes.GetAll();
 
-//     public Task<IReadOnlyList<Commande>> GetAllAsync() =>
-//         _commandeRepo.GetAll();
+    public Task<Commande?> GetCommandeById(int id) =>
+        unitOfWork.Commandes.GetById(id);
 
-//     public async Task DeleteAsync(int id)
-//     {
-//         var commande = await _commandeRepo.GetById(id);
-//         if (commande is null)
-//             throw new Exception("Commande introuvable.");
+    public async Task<Commande?> UpdateCommande(int id, UpdateCommandeRequest request)
+    {
+        Commande? commandeFounded = await unitOfWork.Commandes.GetById(id);
+        if (commandeFounded is null)
+            return null;
+        commandeFounded.NumeroCommande = request.NumeroCommande;
+        commandeFounded.MontantTotal = request.MontantTotal;
+        commandeFounded.Statut = request.Statut;
+        commandeFounded.ClientId = request.ClientId;
 
-//         _commandeRepo.Remove(commande);
-//         await _uow.SaveChangesAsync();
-//     }
-// }
+        await unitOfWork.SaveChangesAsync();
+
+        return commandeFounded;
+    }
+    
+    public async Task<bool> DeleteCommande(int id)
+    {
+        Commande? commandeFounded = await unitOfWork.Commandes.GetById(id);
+        if (commandeFounded is null)
+            return false;
+        unitOfWork.Commandes.Remove(commandeFounded);
+        await unitOfWork.SaveChangesAsync();
+        return true;
+    }
+}

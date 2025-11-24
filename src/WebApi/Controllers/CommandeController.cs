@@ -1,50 +1,55 @@
-// //GET (tous/un), POST, PUT, DELETE.
+using Application.Commandes;
+using Microsoft.AspNetCore.Mvc;
+[ApiController]
+[Route("[controller]")]
+public class CommandeController(ICommandeService commandeService) : ControllerBase
+{
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateCommandeRequest request)
+    {
+        Commande? commande = await commandeService.CreateCommande(request);
+        if (commande is null)
+            return NotFound("Client introuvable.");
+        return Ok(commande);         
+    }
 
-// public class CommandeController
-// {
-//     private readonly ICommandeService CommandeService;
+    [HttpGet]
+    public async Task<IActionResult> GetAllCommandes()
+    {
+        IReadOnlyList<Commande> commandes = await commandeService.GetAllCommandes();
+        return Ok(commandes);
+    }
 
-//     public CommandeController(ICommandeService commandeService)
-//     {
-//         CommandeService = commandeService;
-//     }
+    [HttpGet("{commandeId:int}")]
+    public async Task<IActionResult> GetCommandeById(int commandeId)
+    {
+        Commande? commande = await commandeService.GetCommandeById(commandeId);
+        if (commande is null)
+            return NotFound("Commande introuvable.");
+        return Ok(commande);
+    }
 
-//     public RouteGroupBuilder MapCommandeEndpoints(WebApplication app)
-//     {
-//         var group = app.MapGroup("/commandes");
+    [HttpPut("{commandeId:int}")]
+        public async Task<IActionResult> UpdateCommande(int commandeId, UpdateCommandeRequest request)
+    {
+        Commande? commande = await commandeService.UpdateCommande(commandeId, request);
+        return Ok(commande);
+    }
 
-//         group.MapGet("/", () =>
-//         {
-//             List<CommandeDto> commandes = CommandeService.GetAllCommandes();
-//             return Results.Ok(commandes);
-//         });
-
-//         group.MapGet("/{id}", (int id) =>
-//         {
-//             CommandeDto? commande = CommandeService.GetCommandeById(id);
-//             return (commande is null) ? Results.NotFound() : Results.Ok(commande);
-//         });
-
-//         group.MapPost("/", (CreateCommandeDto newCommande) =>
-//         {
-//             CommandeService.CreateCommande(newCommande);
-//             return Results.Ok("POST new commande");
-//         });
-
-//         group.MapPut("/{id}", (int id, UpdateCommandeDto updatedCommande) =>
-//         {
-//             CommandeService.UpdateCommande(id, updatedCommande);
-//             return Results.Ok($"PUT update commande with ID: {id}");
-//         });
-
-//         group.MapDelete("/{id}", (int id) =>
-//         {
-//             CommandeService.DeleteCommande(id);
-//             return Results.Ok($"DELETE commande with ID: {id}");
-//         });
-//         return group;
-//     }
-// }
+    [HttpDelete("{commandeId:int}")]
+    public async Task<IActionResult> DeleteCommande(int commandeId)
+    {
+        bool deleted = await commandeService.DeleteCommande(commandeId);
+        if (deleted)
+        {
+            return Ok();
+        }
+        else
+        {
+            return NotFound("Commande introuvable.");
+        }
+    }
+}
 
 
 

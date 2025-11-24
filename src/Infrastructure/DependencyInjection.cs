@@ -12,8 +12,7 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         services.AddScoped<IClientRepository, ClientRepository>();
-        // services.AddScoped<ICommandeRepository, CommandeRepository>();
-        services.AddScoped<IClientRepository, ClientRepository>();
+        services.AddScoped<ICommandeRepository, CommandeRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddDbContext<DbStoreContext>(options =>
     options.UseSqlServer(
