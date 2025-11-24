@@ -1,4 +1,5 @@
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 public class ClientRepository : IClientRepository
 {
@@ -8,14 +9,18 @@ public class ClientRepository : IClientRepository
     {
         _context = context;
     }
-
-    public async Task Add(Client client) => await _context.Clients.AddAsync(client);
-
-    public async Task<Client?> GetById(int id)
-        => await _context.Clients.Include(x => x.Commandes).FirstOrDefaultAsync(x => x.Id == id);
+    public void Add(Client client) 
+        => _context.Clients.Add(client);
 
     public async Task<IReadOnlyList<Client>> GetAll()
         => await _context.Clients.Include(x => x.Commandes).ToListAsync();
 
-    public void Remove(Client client) => _context.Clients.Remove(client);
+    public async Task<Client?> GetById(Guid id)
+        => await _context.Clients.Include(x => x.Commandes).FirstOrDefaultAsync(x => x.Id == id);
+
+    public void Update(Client client)
+        => _context.Clients.Update(client);
+
+    public void Remove(Client client)
+        => _context.Clients.Remove(client);
 }

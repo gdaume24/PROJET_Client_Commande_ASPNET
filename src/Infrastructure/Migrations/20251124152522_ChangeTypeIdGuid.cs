@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace TP_ASP_NET_CORE.Migrations
+namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class NouvelleMigrationOneToManyClientCommande : Migration
+    public partial class ChangeTypeIdGuid : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,13 +15,12 @@ namespace TP_ASP_NET_CORE.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nom = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Prenom = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Telephone = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Adresse = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Nom = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Prenom = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Telephone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Adresse = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCreation = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -33,13 +32,12 @@ namespace TP_ASP_NET_CORE.Migrations
                 name: "Commandes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NumeroCommande = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NumeroCommande = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateCommande = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MontantTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Statut = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ClientId = table.Column<int>(type: "int", nullable: false)
+                    Statut = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClientId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {

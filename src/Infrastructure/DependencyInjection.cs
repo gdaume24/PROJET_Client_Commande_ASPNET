@@ -1,5 +1,4 @@
 ﻿using Domain.Interfaces;
-using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,14 +12,15 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         services.AddScoped<IClientRepository, ClientRepository>();
-        services.AddScoped<ICommandeRepository, CommandeRepository>();
+        // services.AddScoped<ICommandeRepository, CommandeRepository>();
         services.AddScoped<IClientRepository, ClientRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddDbContext<DbStoreContext>(options =>
-            options.UseSqlServer(
-                configuration.GetConnectionString("DefaultConnection")
-            )
-        );
+    options.UseSqlServer(
+        configuration.GetConnectionString("DefaultConnection")
+    )
+);
+
         return services;
     }
 
