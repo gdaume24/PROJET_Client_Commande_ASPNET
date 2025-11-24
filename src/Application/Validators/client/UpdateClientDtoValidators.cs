@@ -1,6 +1,6 @@
 using FluentValidation;
 
-internal sealed class UpdateClientDtoValidators : AbstractValidator<UpdateClientDto>
+internal sealed class UpdateClientDtoValidators : AbstractValidator<UpdateClientRequest>
 {
     public UpdateClientDtoValidators()
     {

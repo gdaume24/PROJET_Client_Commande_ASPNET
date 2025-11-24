@@ -4,10 +4,19 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly DbStoreContext _context;
 
-    public UnitOfWork(DbStoreContext context)
+    public IClientRepository Clients { get; }
+    public ICommandeRepository Commandes { get; }
+
+    public UnitOfWork(DbStoreContext context,
+                      IClientRepository clientRepository,
+                      ICommandeRepository commandeRepository)
     {
         _context = context;
+
+        Clients = clientRepository;
+        Commandes = commandeRepository;
     }
 
-    public Task SaveChangesAsync() => _context.SaveChangesAsync();
+    public Task<int> SaveChangesAsync()
+        => _context.SaveChangesAsync();
 }

@@ -1,6 +1,9 @@
-namespace Domain.Interfaces;
+using Domain.Interfaces;
 
 public interface IUnitOfWork
 {
-    Task SaveChangesAsync();
+    IClientRepository Clients { get; }
+    ICommandeRepository Commandes { get; }
+
+    Task<int> SaveChangesAsync();
 }

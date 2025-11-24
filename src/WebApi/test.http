@@ -1,4 +1,4 @@
-POST http://localhost:5199/clients
+POST http://localhost:5000/client
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5199/clients
+GET http://localhost:5000/client
 
 
 

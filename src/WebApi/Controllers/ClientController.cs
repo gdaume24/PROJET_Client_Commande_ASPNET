@@ -2,47 +2,55 @@ using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-public class ClientController : ControllerBase
+[Route("[controller]")]
+public class ClientController(IClientService clientService) : ControllerBase
 {
-    public RouteGroupBuilder MapClientEndpoints(this WebApplication app)
+    [HttpPost]
+    public async Task<IActionResult> Create(
+        CreateClientRequest request
+        )
     {
-        var group = app.MapGroup("/clients");
+        ClientResponse client = await clientService.CreateClient(request);
+        return Ok(client);         
+    }
 
-        group.MapPost("/",
-            async (CreateClientDto dto, IValidator<CreateClientDto> validator, IClientService service) =>
-                {
-                var validationResult = await validator.ValidateAsync(dto);
+    [HttpGet]
+    public async Task<IActionResult> GetAllClients()
+    {
+        Task<List<ClientResponse>> clients = clientService.GetAllClients();
 
-                if (!validationResult.IsValid)
-                    return Results.ValidationProblem(validationResult.ToDictionary());
+        return Ok(clients);
+    }
 
-                return Results.Ok(await service.Create(dto));
-                });
+    [HttpGet("{clientId:guid}")]
+    public IActionResult GetClientById(Guid clientId)
+    {
+        //invoking the use case 
+        Task<ClientResponse?> client = clientService.GetClientById(clientId);
+        // return 200 ok response
+        return Ok(client);
+    }
 
-
-        group.MapGet("/", (IClientService clientService) =>
+    [HttpPut("{clientId:guid}")]
+    public IActionResult UpdateClient(
+        Guid clientId, 
+        [FromBody] UpdateClientRequest request,
+        [FromServices] IValidator<UpdateClientRequest> validator
+        )
+    {
+        var validation = validator.Validate(request);
+        if (!validation.IsValid)
         {
-            List<ClientDto> clients = clientService.GetAllClients();
-            return Results.Ok(clients);
-        });
+            return BadRequest(validation.Errors);
+        }
+        Task<ClientResponse> client = clientService.UpdateClient(clientId, request);
+        return Ok(client);
+    }
 
-        group.MapGet("/{id}", (int id) =>
-        {
-            ClientDto? client = ClientService.GetClientById(id);
-            return (client is null) ? Results.NotFound() : Results.Ok(client);
-        });
-        group.MapPut("/{id}", (int id, UpdateClientDto updatedClient) =>
-        {
-            ClientService.UpdateClient(id, updatedClient);
-            return Results.Ok($"PUT update client with ID: {id}");
-        });
-
-        group.MapDelete("/{id}", (int id) =>
-        {
-            ClientService.DeleteClient(id);
-            return Results.Ok($"DELETE client with ID: {id}");
-        });
-
-        return group;
+    [HttpDelete("{clientId:guid}")]
+    public IActionResult DeleteClient(Guid clientId)
+    {
+        clientService.DeleteClient(clientId);
+        return Ok($"DELETE client with ID: {clientId}");
     }
 }
