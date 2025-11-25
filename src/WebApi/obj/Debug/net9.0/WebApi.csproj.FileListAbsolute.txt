@@ -21,7 +21,6 @@
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/MediatR.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/MediatR.Contracts.dll
-/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/Microsoft.AspNetCore.OpenApi.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/Microsoft.Data.SqlClient.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/Microsoft.EntityFrameworkCore.dll
@@ -95,3 +94,6 @@
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/runtimes/win/lib/net9.0/System.Text.Encodings.Web.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/FluentValidation.AspNetCore.dll
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/WebApi/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll

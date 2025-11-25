@@ -10,14 +10,14 @@ public class ClientController(IClientService clientService) : ControllerBase
         CreateClientRequest request
         )
     {
-        ClientResponse client = await clientService.CreateClient(request);
+        ClientResponseWithoutCommands client = await clientService.CreateClient(request);
         return Ok(client);         
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllClients()
     {
-        IReadOnlyList<ClientResponse> clients = await clientService.GetAllClients();
+        IReadOnlyList<ClientResponseWithoutCommands> clients = await clientService.GetAllClients();
         return Ok(clients);
     }
 
@@ -25,7 +25,7 @@ public class ClientController(IClientService clientService) : ControllerBase
     public async Task<IActionResult> GetClientById(int clientId)
     {
         //invoking the use case 
-        ClientResponse? client = await clientService.GetClientById(clientId);
+        ClientResponseWithoutCommands? client = await clientService.GetClientById(clientId);
         // return 200 ok response
         if (client is null)
             return NotFound("Client introuvable.");
@@ -47,7 +47,7 @@ public class ClientController(IClientService clientService) : ControllerBase
         [FromBody] UpdateClientRequest request
         )
     {
-        ClientResponse? client = await clientService.UpdateClient(clientId, request);
+        ClientResponseWithoutCommands? client = await clientService.UpdateClient(clientId, request);
         if (client is null)
             return NotFound("Client introuvable.");
         return Ok(client);
