@@ -1,0 +1,7 @@
+using System.Security.Claims;
+
+public interface IAuthenticationService
+{
+    Task<User?> Authenticate(string email, string password);
+    string GenerateToken(string secret, List<Claim> claims);
+}
