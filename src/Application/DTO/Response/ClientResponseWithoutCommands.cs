@@ -1,6 +1,6 @@
 
 
-public class ClientResponse
+public class ClientResponseWithoutCommands
 {
 	public int Id { get; set; }
 	public string Nom { get; set; }

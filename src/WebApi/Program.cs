@@ -1,12 +1,10 @@
 using Application;
-using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenApi();
+// builder.Services.AddOpenApi();
 builder.Services
     .AddApplication()   
     .AddInfrastructure(builder.Configuration)
@@ -16,14 +14,9 @@ builder.Services
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 
- 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+
 app.AddExceptionHandler();
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,7 +1,7 @@
 public static class ClientMapper
 {
-    public static ClientResponse ToResponse(this Client client)
-        => new ClientResponse
+    public static ClientResponseWithoutCommands ToResponse(this Client client)
+        => new ClientResponseWithoutCommands
         {
             Id = client.Id,
             Nom = client.Nom,
