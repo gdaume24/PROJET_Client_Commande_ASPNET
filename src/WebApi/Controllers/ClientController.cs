@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 [Route("[controller]")]
 public class ClientController(IClientService clientService) : ControllerBase
 {
+    /// <summary>
+    /// Create a new client
+    /// </summary>
     [HttpPost]
     public async Task<IActionResult> Create(
         CreateClientRequest request
@@ -14,6 +17,9 @@ public class ClientController(IClientService clientService) : ControllerBase
         return Ok(client);         
     }
 
+    /// <summary>
+    /// Get all clients
+    /// </summary>
     [HttpGet]
     public async Task<IActionResult> GetAllClients()
     {
@@ -21,6 +27,9 @@ public class ClientController(IClientService clientService) : ControllerBase
         return Ok(clients);
     }
 
+    /// <summary>
+    /// Get a client by its ID
+    /// </summary>
     [HttpGet("{clientId:int}")]
     public async Task<IActionResult> GetClientById(int clientId)
     {
@@ -32,6 +41,9 @@ public class ClientController(IClientService clientService) : ControllerBase
         return Ok(client);
     }
 
+    /// <summary>
+    /// Get client commands by client ID
+    /// </summary>
     [HttpGet("{clientId:int}/commandes")]
     public async Task<IActionResult> GetClientCommandesById(int clientId)
     {
@@ -41,6 +53,9 @@ public class ClientController(IClientService clientService) : ControllerBase
         return Ok(commandes);
     }
 
+    /// <summary>
+    /// Modify a client
+    /// </summary>
     [HttpPut("{clientId:int}")]
     public async Task<IActionResult> UpdateClient(
         int clientId, 
@@ -52,7 +67,10 @@ public class ClientController(IClientService clientService) : ControllerBase
             return NotFound("Client introuvable.");
         return Ok(client);
     }
-
+    
+    /// <summary>
+    /// Delete a client by client ID
+    /// </summary>
     [HttpDelete("{clientId:int}")]
     public async Task<IActionResult> DeleteClient(int clientId)
     {

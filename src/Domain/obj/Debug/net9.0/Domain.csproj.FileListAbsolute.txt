@@ -1,11 +1,11 @@
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/bin/Debug/net9.0/Domain.deps.json
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/bin/Debug/net9.0/Domain.dll
+/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/bin/Debug/net9.0/Domain.pdb
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/Debug/net9.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/Debug/net9.0/Domain.csproj.CoreCompileInputs.cache
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/Debug/net9.0/Domain.sourcelink.json
-/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/bin/Debug/net9.0/Domain.deps.json
-/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/bin/Debug/net9.0/Domain.dll
-/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/bin/Debug/net9.0/Domain.pdb
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/Debug/net9.0/Domain.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/Debug/net9.0/refint/Domain.dll
 /Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/Debug/net9.0/Domain.pdb
