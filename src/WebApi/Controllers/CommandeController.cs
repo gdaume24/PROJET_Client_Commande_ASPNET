@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 [Route("[controller]")]
 public class CommandeController(ICommandeService commandeService) : ControllerBase
 {
+    /// <summary>
+    /// Create a new commande
+    /// </summary>
     [HttpPost]
     public async Task<IActionResult> Create(CreateCommandeRequest request)
     {
@@ -13,6 +16,9 @@ public class CommandeController(ICommandeService commandeService) : ControllerBa
         return Ok(commande);         
     }
 
+    /// <summary>
+    /// Get all commandes
+    /// </summary>
     [HttpGet]
     public async Task<IActionResult> GetAllCommandes()
     {
@@ -20,6 +26,9 @@ public class CommandeController(ICommandeService commandeService) : ControllerBa
         return Ok(commandes);
     }
 
+    /// <summary>
+    /// Get a commande by its ID
+    /// </summary>
     [HttpGet("{commandeId:int}")]
     public async Task<IActionResult> GetCommandeById(int commandeId)
     {
@@ -29,6 +38,9 @@ public class CommandeController(ICommandeService commandeService) : ControllerBa
         return Ok(commande);
     }
 
+    /// <summary>
+    /// Modify a commande
+    /// </summary>
     [HttpPut("{commandeId:int}")]
         public async Task<IActionResult> UpdateCommande(int commandeId, UpdateCommandeRequest request)
     {
@@ -36,6 +48,9 @@ public class CommandeController(ICommandeService commandeService) : ControllerBa
         return Ok(commande);
     }
 
+    /// <summary>
+    /// Delete a commande by commande ID
+    /// </summary>
     [HttpDelete("{commandeId:int}")]
     public async Task<IActionResult> DeleteCommande(int commandeId)
     {
