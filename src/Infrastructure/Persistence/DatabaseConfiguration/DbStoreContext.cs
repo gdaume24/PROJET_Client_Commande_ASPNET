@@ -5,6 +5,7 @@ public class DbStoreContext : DbContext
     public DbStoreContext(DbContextOptions<DbStoreContext> options)
         : base(options) {}
 
+    public DbSet<User> Users { get; set; }
     public DbSet<Client> Clients { get; set; }
     public DbSet<Commande> Commandes { get; set; }
 
