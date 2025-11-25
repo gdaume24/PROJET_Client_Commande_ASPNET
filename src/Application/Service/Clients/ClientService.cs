@@ -4,7 +4,7 @@ public class ClientService(
     IUnitOfWork unitOfWork
     ) : IClientService
 {
-    public async Task<ClientResponse> CreateClient(CreateClientRequest clientRequest)
+    public async Task<ClientResponseWithoutCommands> CreateClient(CreateClientRequest clientRequest)
     {
     Client client = new Client
     {
@@ -19,10 +19,10 @@ public class ClientService(
 
         return client.ToResponse();
     }   
-    public async Task<IReadOnlyList<ClientResponse>> GetAllClients()
+    public async Task<IReadOnlyList<ClientResponseWithoutCommands>> GetAllClients()
         => (await unitOfWork.Clients.GetAll()).Select(c => c.ToResponse()).ToList();
     
-    public async Task<ClientResponse?> GetClientById(int id)
+    public async Task<ClientResponseWithoutCommands?> GetClientById(int id)
     {
         Client? client = await unitOfWork.Clients.GetById(id);
         return client?.ToResponse();
@@ -37,7 +37,7 @@ public class ClientService(
         return client.Commandes.ToList();
     }
 
-    public async Task<ClientResponse?> UpdateClient(int id, UpdateClientRequest request)    
+    public async Task<ClientResponseWithoutCommands?> UpdateClient(int id, UpdateClientRequest request)    
     {
         Client? existingClient = await unitOfWork.Clients.GetById(id);
         if (existingClient is null) return null;
