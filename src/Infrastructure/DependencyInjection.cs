@@ -11,6 +11,7 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
         services.AddScoped<IClientRepository, ClientRepository>();
         services.AddScoped<ICommandeRepository, CommandeRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
