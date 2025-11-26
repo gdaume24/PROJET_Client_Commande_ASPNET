@@ -4,7 +4,6 @@ namespace Application.Commandes;
 
 public class CommandeService(IUnitOfWork unitOfWork) : ICommandeService
 {
-
     public async Task<Commande?> CreateCommande(CreateCommandeRequest request)
     {
         var client = await unitOfWork.Clients.GetById(request.ClientId);
@@ -68,3 +67,25 @@ public class CommandeService(IUnitOfWork unitOfWork) : ICommandeService
         return true;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bec5e3d0_002D38d3_002D4b88_002Da9f3_002D378025c8f896/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CommandeService_CreateCommande_checkClientAdded_ReturnCommand" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_CreateCommande_checkClientAdded_ReturnCommand&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_GetAllCommandes_checkReturnAllCommands&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_GetCommandeById_checkCommand&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_UpdateCommande_CheckCommandeIsWellUpdated&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_DeleteCommande_CheckCommandeIsWellUpdated&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.AuthenticationServiceTest.AuthenticationService_GenerateToken_IsGeneratingGoodToken&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
