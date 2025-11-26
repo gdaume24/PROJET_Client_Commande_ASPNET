@@ -33,20 +33,30 @@ public class CommandeService(IUnitOfWork unitOfWork) : ICommandeService
     public Task<Commande?> GetCommandeById(int id) =>
         unitOfWork.Commandes.GetById(id);
 
-    public async Task<Commande?> UpdateCommande(int id, UpdateCommandeRequest request)
+    public async Task<UpdateCommandeResult> UpdateCommande(int id, UpdateCommandeRequest request)
     {
-        Commande? commandeFounded = await unitOfWork.Commandes.GetById(id);
-        if (commandeFounded is null)
-            return null;
-        commandeFounded.NumeroCommande = request.NumeroCommande;
-        commandeFounded.MontantTotal = request.MontantTotal;
-        commandeFounded.Statut = request.Statut;
-        commandeFounded.ClientId = request.ClientId;
+        var commande = await unitOfWork.Commandes.GetById(id);
+        if (commande is null)
+            return new UpdateCommandeResult { Status = UpdateCommandeResultStatus.CommandeNotFound };
+
+        var client = await unitOfWork.Clients.GetById(request.ClientId);
+        if (client is null)
+            return new UpdateCommandeResult { Status = UpdateCommandeResultStatus.ClientNotFound };
+
+        commande.NumeroCommande = request.NumeroCommande;
+        commande.MontantTotal = request.MontantTotal;
+        commande.Statut = request.Statut;
+        commande.ClientId = request.ClientId;
 
         await unitOfWork.SaveChangesAsync();
 
-        return commandeFounded;
+        return new UpdateCommandeResult
+        {
+            Status = UpdateCommandeResultStatus.Success,
+            Commande = commande
+        };
     }
+
     
     public async Task<bool> DeleteCommande(int id)
     {

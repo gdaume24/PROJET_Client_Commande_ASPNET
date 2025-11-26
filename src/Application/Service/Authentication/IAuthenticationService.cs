@@ -4,4 +4,7 @@ public interface IAuthenticationService
 {
     Task<User?> Authenticate(string email, string password);
     string GenerateToken(string secret, List<Claim> claims);
+    public Task<bool> IsEmailAlreadyTaken(string email);
+    public Task Register(User newUser);
+
 }
