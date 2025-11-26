@@ -6,6 +6,5 @@ public interface IClientRepository
     Task<IReadOnlyList<Client>> GetAll();
     Task<Client?> GetById(int id);
     Task<Client?> GetByIdWithCommandes(int id);
-
     void Remove(Client client);
 }
