@@ -6,18 +6,23 @@ public class DbStoreContextFactory : IDesignTimeDbContextFactory<DbStoreContext>
 {
     public DbStoreContext CreateDbContext(string[] args)
     {
-        // charge appsettings.json depuis WebApi
-        IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
+        // Path du projet WebApi
+        var basePath = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "..",   // remonte d’un dossier
+            "WebApi"
+        );
+
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(basePath)
             .AddJsonFile("appsettings.json", optional: false)
             .Build();
 
-        var optionsBuilder = new DbContextOptionsBuilder<DbStoreContext>();
-
+        var builder = new DbContextOptionsBuilder<DbStoreContext>();
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
-        optionsBuilder.UseSqlServer(connectionString);
+        builder.UseSqlServer(connectionString);
 
-        return new DbStoreContext(optionsBuilder.Options);
+        return new DbStoreContext(builder.Options);
     }
 }

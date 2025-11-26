@@ -1,7 +1,9 @@
 using Application.Commandes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class CommandeController(ICommandeService commandeService) : ControllerBase
 {
     /// <summary>
@@ -44,8 +46,14 @@ public class CommandeController(ICommandeService commandeService) : ControllerBa
     [HttpPut("{commandeId:int}")]
         public async Task<IActionResult> UpdateCommande(int commandeId, UpdateCommandeRequest request)
     {
-        Commande? commande = await commandeService.UpdateCommande(commandeId, request);
-        return Ok(commande);
+        UpdateCommandeResult result = await commandeService.UpdateCommande(commandeId, request);
+        return result.Status switch
+        {
+            UpdateCommandeResultStatus.CommandeNotFound => NotFound("Commande introuvable."),
+            UpdateCommandeResultStatus.ClientNotFound   => BadRequest("Client inexistant."),
+            UpdateCommandeResultStatus.Success          => Ok(result.Commande),
+            _                                           => StatusCode(500)
+        };
     }
 
     /// <summary>

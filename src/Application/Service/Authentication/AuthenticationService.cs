@@ -10,20 +10,31 @@ public class AuthenticationService(IUnitOfWork unitOfWork) : IAuthenticationServ
         return unitOfWork.Authentication.GetUserByEmailAndPasswordAsync(email, password);
     }
 
-        public string GenerateToken(string secret, List<Claim> claims)
+    public string GenerateToken(string secret, List<Claim> claims)
+    {
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+        var tokenDescriptor = new SecurityTokenDescriptor
         {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.UtcNow.AddMinutes(60),
-                SigningCredentials = new SigningCredentials(
-                    key,
-                    SecurityAlgorithms.HmacSha256Signature)
+            Subject = new ClaimsIdentity(claims),
+            Expires = DateTime.UtcNow.AddMinutes(60),
+            SigningCredentials = new SigningCredentials(
+                key,
+                SecurityAlgorithms.HmacSha256Signature)
 
-            };
-            var tokenHandler = new JsonWebTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return token;
-        }
+        };
+        var tokenHandler = new JsonWebTokenHandler();
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return token;
+    }
+
+    public Task<bool> IsEmailAlreadyTaken(string email)
+    {
+        return unitOfWork.Authentication.IsEmailAlreadyTakenAsync(email);
+    }
+
+    public Task Register(User newUser)
+    {
+        unitOfWork.Authentication.Add(newUser);
+        return unitOfWork.SaveChangesAsync();
+    }
 }
