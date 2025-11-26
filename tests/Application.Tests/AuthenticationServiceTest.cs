@@ -40,5 +40,4 @@ public class AuthenticationServiceTest
             c.Type == ClaimTypes.Email &&
             c.Value == "Eliot59@yopmail.com");
     }
-
 }
