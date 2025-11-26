@@ -8,6 +8,7 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        services.AddTransient<IAuthenticationService, AuthenticationService>();
         services.AddScoped<IClientService, ClientService>();
         services.AddScoped<ICommandeService, CommandeService>();
         services.AddValidatorsFromAssemblyContaining<CreateClientRequest>();

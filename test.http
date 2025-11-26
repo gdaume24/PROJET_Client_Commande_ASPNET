@@ -1,3 +1,23 @@
+###
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username": "gerard",
+    "email": "geo@ds.com",
+    "password": "yourpassword"
+}
+
+###
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email": "geo@ds.com",
+    "password": "yourpassword"
+}
+
+###
 POST http://localhost:5000/client
 Content-Type: application/json
 
