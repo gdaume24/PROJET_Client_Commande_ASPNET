@@ -19,4 +19,10 @@ public class AuthenticationRepository : IAuthenticationRepository
     }
     public void Add(User newUser)
         => _context.Users.Add(newUser);
+
+    public Task<User?> GetUserByEmailAsync(string email)
+    {
+        return _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+    }
+
 }
