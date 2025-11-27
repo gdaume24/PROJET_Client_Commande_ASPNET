@@ -1,4 +1,7 @@
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Application.DTO.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -47,5 +50,21 @@ public class AuthenticationController(
 
         await authenticationService.Register(newUser);
         return Ok("User registered successfully.");
+    }
+
+    [Authorize]
+    [HttpGet("me")]
+    public async Task<IActionResult> GetUserInformations()
+    {
+        var email = User.FindFirst(ClaimTypes.Email)?.Value;
+        if (email is null)
+            return Unauthorized();
+        UserResponseWithoutPassword? user = await authenticationService.GetUserByEmail(email);
+        if (user == null)
+        {
+            return Unauthorized();
+        }
+        return Ok(user);
+
     }
 }

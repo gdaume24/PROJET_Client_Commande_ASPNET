@@ -1,5 +1,7 @@
 using System.Security.Claims;
 using System.Text;
+using Application.DTO.Response;
+using Application.Mappers;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
@@ -37,4 +39,11 @@ public class AuthenticationService(IUnitOfWork unitOfWork) : IAuthenticationServ
         unitOfWork.Authentication.Add(newUser);
         return unitOfWork.SaveChangesAsync();
     }
+
+    public async Task<UserResponseWithoutPassword?> GetUserByEmail(string email)
+    {
+        User? user = await unitOfWork.Authentication.GetUserByEmailAsync(email);
+        return user?.ToResponse();
+    }
+
 }
