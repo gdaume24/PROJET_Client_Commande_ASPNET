@@ -11,6 +11,7 @@ services:
     user: root
     volumes:
       - sqlserver_data:/var/opt/mssql/data
+
     restart: always
 
 volumes:

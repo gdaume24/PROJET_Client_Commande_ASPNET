@@ -1,22 +1,38 @@
 using System.Reflection;
 using System.Text;
+using DotNetEnv;
 using Application;
 using FluentValidation.AspNetCore;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Env.Load();
+
+// Lire les variables du .env
+var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
+var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+var connectionString =
+    $"Server={dbServer},{dbPort};Database={dbName};User Id={dbUser};Password={dbPassword};Trusted_Connection=true;encrypt=false;";
+Console.WriteLine(connectionString);
 builder.Services
     .AddApplication()   
-    .AddInfrastructure(builder.Configuration)
+    .AddInfrastructure(connectionString)
     .AddControllers();
 
 // FluentValidation automatic integration
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
+
+// Swagger config
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -60,20 +76,23 @@ builder.Services.AddSwaggerGen(c =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
+
+// ==== JWT CONFIG ====
+var jwtKey = Environment.GetEnvironmentVariable("JWT__KEY")
+             ?? throw new Exception("JWT key missing");
+builder.Configuration["Jwt:Key"] = jwtKey;
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     })
     .AddJwtBearer(options => {
-        var secret = builder.Configuration["Jwt:Key"] 
-        ?? throw new Exception("JWT key not found in configuration.");
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = false,
             ValidateAudience = false,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret)),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
         };
     });
 
@@ -86,7 +105,11 @@ if (app.Environment.IsDevelopment())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
     });
-    
+}
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<DbStoreContext>();
+    db.Database.Migrate();
 }
 
 app.AddExceptionHandler();

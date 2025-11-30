@@ -204,3 +204,5 @@ D:\WORKDIR\portfolio\back\src\WebApi\obj\Debug\net9.0\WebApi.xml
 D:\WORKDIR\portfolio\back\src\WebApi\obj\Debug\net9.0\WebApi.pdb
 D:\WORKDIR\portfolio\back\src\WebApi\obj\Debug\net9.0\WebApi.genruntimeconfig.cache
 D:\WORKDIR\portfolio\back\src\WebApi\obj\Debug\net9.0\ref\WebApi.dll
+D:\WORKDIR\portfolio\back\src\WebApi\bin\Debug\net9.0\DotNetEnv.dll
+D:\WORKDIR\portfolio\back\src\WebApi\bin\Debug\net9.0\Sprache.dll
