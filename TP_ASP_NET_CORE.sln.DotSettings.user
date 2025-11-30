@@ -1,15 +1,15 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AIConfiguration_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003FLibrary_003FApplication_0020Support_003FJetBrains_003FRider2025_002E2_003Fresharper_002Dhost_003FSourcesCache_003F17a3a8d481919bdc3f1630b5a7deadb2cd394fa12fff3312e6abe29bfc4_003FIConfiguration_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bec5e3d0_002D38d3_002D4b88_002Da9f3_002D378025c8f896/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CommandeService_CreateCommande_checkClientAdded_ReturnCommand" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_CreateCommande_checkClientAdded_ReturnCommand&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_GetAllCommandes_checkReturnAllCommands&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_GetCommandeById_checkCommand&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_UpdateCommande_CheckCommandeIsWellUpdated&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_DeleteCommande_CheckCommandeIsWellUpdated&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.AuthenticationServiceTest.AuthenticationService_GenerateToken_IsGeneratingGoodToken&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::9CD8C139-2969-4D23-A0E6-AFE3A2B84A01::net9.0::WebApi.Tests.AuthenticationControllerTests.AuthenticationController_Login_ReturnOKWithToken&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::9CD8C139-2969-4D23-A0E6-AFE3A2B84A01::net9.0::WebApi.Tests.AuthenticationControllerTests.AuthenticationController_Login_ReturnsUnauthorized_WhenUserWrongCoupleEmailPassword&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::9CD8C139-2969-4D23-A0E6-AFE3A2B84A01::net9.0::WebApi.Tests.AuthenticationControllerTests.AuthenticationController_Register_ReturnOk&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=bec5e3d0_002D38d3_002D4b88_002Da9f3_002D378025c8f896/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CommandeService_CreateCommande_checkClientAdded_ReturnCommand" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_CreateCommande_checkClientAdded_ReturnCommand&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_GetAllCommandes_checkReturnAllCommands&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_GetCommandeById_checkCommand&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_UpdateCommande_CheckCommandeIsWellUpdated&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.CommandesServiceTests.CommandeService_DeleteCommande_CheckCommandeIsWellUpdated&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::91C429BF-89AF-46EF-AF89-DD0AA8A2FAB6::net9.0::Application.Tests.AuthenticationServiceTest.AuthenticationService_GenerateToken_IsGeneratingGoodToken&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::9CD8C139-2969-4D23-A0E6-AFE3A2B84A01::net9.0::WebApi.Tests.AuthenticationControllerTests.AuthenticationController_Login_ReturnOKWithToken&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::9CD8C139-2969-4D23-A0E6-AFE3A2B84A01::net9.0::WebApi.Tests.AuthenticationControllerTests.AuthenticationController_Login_ReturnsUnauthorized_WhenUserWrongCoupleEmailPassword&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::9CD8C139-2969-4D23-A0E6-AFE3A2B84A01::net9.0::WebApi.Tests.AuthenticationControllerTests.AuthenticationController_Register_ReturnOk&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
