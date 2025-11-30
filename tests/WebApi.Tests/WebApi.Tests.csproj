@@ -6,6 +6,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>WebApi.Tests</RootNamespace>
     <TargetFramework>net9.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <!--
     This template uses native xUnit.net command line options when using 'dotnet run' and
     VSTest by default when using 'dotnet test'. For more information on how to enable support
@@ -32,6 +33,12 @@
   <ItemGroup>
     <ProjectReference Include="../../src/Application/Application.csproj" />
     <ProjectReference Include="../../src/WebApi/WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
   </ItemGroup>
 
 </Project>
