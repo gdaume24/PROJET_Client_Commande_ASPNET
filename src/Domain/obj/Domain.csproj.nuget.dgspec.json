@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\WORKDIR\\portfolio\\back\\src\\Domain\\Domain.csproj": {}
+    "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/Domain.csproj": {}
   },
   "projects": {
-    "D:\\WORKDIR\\portfolio\\back\\src\\Domain\\Domain.csproj": {
+    "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\WORKDIR\\portfolio\\back\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\WORKDIR\\portfolio\\back\\src\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\geoff\\.nuget\\packages\\",
-        "outputPath": "D:\\WORKDIR\\portfolio\\back\\src\\Domain\\obj\\",
+        "projectPath": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/Domain.csproj",
+        "packagesPath": "/Users/apple/.nuget/packages/",
+        "outputPath": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\geoff\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/apple/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

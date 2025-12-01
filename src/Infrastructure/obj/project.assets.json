@@ -4889,19 +4889,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\geoff\\.nuget\\packages\\": {}
+    "/Users/apple/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\WORKDIR\\portfolio\\back\\src\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Infrastructure/Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\WORKDIR\\portfolio\\back\\src\\Infrastructure\\Infrastructure.csproj",
-      "packagesPath": "C:\\Users\\geoff\\.nuget\\packages\\",
-      "outputPath": "D:\\WORKDIR\\portfolio\\back\\src\\Infrastructure\\obj\\",
+      "projectPath": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Infrastructure/Infrastructure.csproj",
+      "packagesPath": "/Users/apple/.nuget/packages/",
+      "outputPath": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\geoff\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/apple/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -4913,11 +4913,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\WORKDIR\\portfolio\\back\\src\\Application\\Application.csproj": {
-              "projectPath": "D:\\WORKDIR\\portfolio\\back\\src\\Application\\Application.csproj"
+            "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Application/Application.csproj": {
+              "projectPath": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Application/Application.csproj"
             },
-            "D:\\WORKDIR\\portfolio\\back\\src\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\WORKDIR\\portfolio\\back\\src\\Domain\\Domain.csproj"
+            "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/Domain.csproj": {
+              "projectPath": "/Users/apple/workdir/ecole/C#/TP_ASP_NET_CORE/src/Domain/Domain.csproj"
             }
           }
         }
@@ -4991,7 +4991,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
