@@ -17,10 +17,15 @@ public class DbStoreContext : DbContext
             .WithMany(c => c.Commandes)
             .HasForeignKey(c => c.ClientId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        // Précision du decimal MontantTotal
+        modelBuilder.Entity<Commande>()
+            .Property(c => c.MontantTotal)
+            .HasPrecision(18, 2);
 
         modelBuilder.Entity<Commande>()
             .HasIndex(c => c.ClientId);
-
+            
         base.OnModelCreating(modelBuilder);
     }
 }
