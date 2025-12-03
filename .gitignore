@@ -1,1 +1,7 @@
 ﻿.env
+bin/
+obj/
+*.dll
+*.pdb
+*.cache
+*.log
