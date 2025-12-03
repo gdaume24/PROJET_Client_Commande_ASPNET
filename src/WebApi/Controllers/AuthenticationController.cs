@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Application.DTO.Response;
+using Application.DTO.Response.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ public class AuthenticationController(
     [Route("login")]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
     {
-        var user = await authenticationService.Authenticate(model.Email, model.Password);
+        UserResponseWithoutPassword? user = await authenticationService.Authenticate(model.Email, model.Password);
         if (user != null)
         {
             var secret = config["Jwt:Key"];
@@ -26,7 +27,11 @@ public class AuthenticationController(
             };
 
             var token = authenticationService.GenerateToken(secret, claims);
-            return Ok(token);   
+            return Ok(new LoginResponse(
+                Token: token,
+                ExpiresAt: DateTime.UtcNow.AddHours(2),
+                User: user
+            )); 
         }
         return Unauthorized();
     }
