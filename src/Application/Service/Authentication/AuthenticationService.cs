@@ -7,9 +7,10 @@ using Microsoft.IdentityModel.Tokens;
 
 public class AuthenticationService(IUnitOfWork unitOfWork) : IAuthenticationService
 {
-    public Task<User?> Authenticate(string email, string password)
+    public async Task<UserResponseWithoutPassword?> Authenticate(string email, string password)
     {
-        return unitOfWork.Authentication.GetUserByEmailAndPasswordAsync(email, password);
+        User user = await unitOfWork.Authentication.GetUserByEmailAndPasswordAsync(email, password);
+        return user.ToResponse();
     }
 
     public string GenerateToken(string secret, List<Claim> claims)
@@ -18,7 +19,7 @@ public class AuthenticationService(IUnitOfWork unitOfWork) : IAuthenticationServ
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddMinutes(60),
+            Expires = DateTime.UtcNow.AddHours(2),
             SigningCredentials = new SigningCredentials(
                 key,
                 SecurityAlgorithms.HmacSha256Signature)
