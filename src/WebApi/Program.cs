@@ -22,6 +22,7 @@ var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 
 var connectionString =
     $"Server={dbServer},{dbPort};Database={dbName};User Id={dbUser};Password={dbPassword};Encrypt=False;TrustServerCertificate=True;";
+Console.WriteLine(connectionString);
 builder.Services
     .AddApplication()   
     .AddInfrastructure(connectionString)

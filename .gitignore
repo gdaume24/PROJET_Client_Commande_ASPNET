@@ -1,11 +1,8 @@
 ﻿.env
 bin/
-<<<<<<< HEAD
 obj/
 *.dll
 *.pdb
 *.cache
 *.log
-=======
-obj/
->>>>>>> b5932c0 (m)
+
