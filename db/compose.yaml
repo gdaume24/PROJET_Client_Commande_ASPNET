@@ -5,7 +5,7 @@ services:
     container_name: sqlserver_local
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=StrongPass2025!  # Le mot de passe de votre connection string
+      - MSSQL_SA_PASSWORD=${DB_PASSWORD}  # Le mot de passe de votre connection string
     ports:
       - "1433:1433"
     user: root
