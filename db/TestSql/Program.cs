@@ -5,7 +5,7 @@ class Program
 {
     static void Main()
     {
-        var conn = "Server=127.0.0.1,1433;User Id=sa;Password=\"StrongPass2025!\";Encrypt=False;TrustServerCertificate=True;";
+        var conn = "Server=localhost,1433;User Id=sa;Password=StrongPass2025!;Encrypt=False;TrustServerCertificate=True;";
 
         try
         {
