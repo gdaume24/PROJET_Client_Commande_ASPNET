@@ -10,6 +10,8 @@ public class AuthenticationService(IUnitOfWork unitOfWork) : IAuthenticationServ
     public async Task<UserResponseWithoutPassword?> Authenticate(string email, string password)
     {
         User user = await unitOfWork.Authentication.GetUserByEmailAndPasswordAsync(email, password);
+        if (user == null)
+            return null;
         return user.ToResponse();
     }
 

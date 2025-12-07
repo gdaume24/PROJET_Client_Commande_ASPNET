@@ -54,7 +54,7 @@ public class AuthenticationController(
         };
 
         await authenticationService.Register(newUser);
-        return Ok("User registered successfully.");
+        return Ok(new { success = true, message = "User registered successfully." });
     }
 
     [Authorize]
