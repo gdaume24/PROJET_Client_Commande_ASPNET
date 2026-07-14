@@ -1,8 +1,21 @@
 ﻿.env
+**/.env
+
 bin/
 obj/
+TestResults/
+coverage/
 *.dll
 *.pdb
 *.cache
 *.log
 
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.DotSettings.user
+
+.DS_Store
+**/.DS_Store
